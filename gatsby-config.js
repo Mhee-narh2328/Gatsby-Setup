@@ -1,16 +1,19 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 module.exports = {
   siteMetadata: {
-    title: `Murpel Modern furniture`,
+    title: `Mheenarh's Company`,
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [{
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": "C4BAfatj5n63mvYQ249csChl0NV37flImvAjmZ-Qhhk",
-      "spaceId": "https://cdn.contentful.com/spaces/4io27mhhc2vt/environments/master/entries/"
+      spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+      accessToken: process.env.GATSBY_CONTENTFUL_DELIVERY_ACCESS_TOKEN
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-styled-components", {
     resolve: 'gatsby-source-filesystem',
